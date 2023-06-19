@@ -4,7 +4,7 @@ import reservationsReducer from '../features/reservationSlice';
 export const store = configureStore({
     reducer:{
         reservations: reservationsReducer,
-    }
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

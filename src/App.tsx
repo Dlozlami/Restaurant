@@ -1,6 +1,16 @@
+import { useSelector } from "react-redux";
 import "./App.css";
+import { RootState } from "./app/store";
+import ReservationCard from "./components/ReservationCard";
+import { useState } from "react";
+
 
 function App() {
+
+  const [reservationNameInput, setReservationNameInput] = useState('');
+
+  const reservations = useSelector((state:RootState) => state.reservations.value)
+
   return (
     <div className="App">
       <div className="container">
@@ -8,7 +18,9 @@ function App() {
           <div>
             <h5 className="reservation-header">Reservations</h5>
             <div className="reservation-cards-container">
-              <div className="reservation-card-container">Laith Harb</div>
+              {reservations.map(name => {
+                return <ReservationCard name={name}/>
+              })}
             </div>
           </div>
           <div className="reservation-input-container">
